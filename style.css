@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 5px;
@@ -19,7 +25,7 @@ body{
 }
 
 nav{
-    background-color: rgba(0, 0, 0, 0.188);
+    background-color: rgba(58, 58, 58, 0.29);
     z-index: 2;
     top: 0px;
 }
@@ -72,7 +78,7 @@ nav{
 .card-body{
     cursor: pointer;
     height: 500px;
-    background-color: rgb(203, 203, 203);
+    background-color: rgb(244, 244, 244) !important;
 }
 
 .ready-row .card-body{
@@ -95,10 +101,35 @@ nav{
 input{
     height: 50px;
 }
+
 @media only screen and (max-width: 600px){
+    .carousel{
+        height: 100vh;
+        overflow: hidden;
+        bottom: 0px;
+    }
+    .carousel-item img{
+        height: 50vh;
+    }
+    .carousel-content{
+        position: relative;
+        bottom: 30vh;
+    }
+    .designs{
+        position: relative;
+        top: -300px;
+    }
     .style-card{
         min-width: 280px;
         max-width: 300px;
         margin-right: 10px;
+    }
+    .ready-products{
+        position: relative;
+        top: -300px;
+    }
+    footer{
+        position: relative;
+        top: -300px;
     }
 }
