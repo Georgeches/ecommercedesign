@@ -1,0 +1,104 @@
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+body{
+}
+
+nav{
+    background-color: rgba(0, 0, 0, 0.188);
+    z-index: 2;
+    top: 0px;
+}
+
+.nav-top, .navbar-collapse{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel{
+    position: relative;
+    bottom: 10vh;
+}
+
+.nav-link{
+    color: rgb(255, 255, 255) !important;
+    margin-right: 60px;
+    font-size: 17px;
+}
+
+.dropdown-item{
+    margin-bottom: 10px;
+    color: rgb(69, 62, 27);
+}
+
+.navbar-brand{
+    margin-left: 50px !important;
+    font-size: 35px;
+    color: goldenrod !important;
+}
+
+.nav-link:hover{
+    color: goldenrod !important;
+}
+
+.carousel-item img{
+    filter: brightness(70%);
+}
+
+.carousel-content{
+    position: relative;
+    bottom: 60vh;
+}
+
+.carousel-content-second{
+    position: relative;
+    bottom: 70vh;
+}
+
+.card-body{
+    cursor: pointer;
+    height: 500px;
+    background-color: rgb(203, 203, 203);
+}
+
+.ready-row .card-body{
+    height: 400px;
+}
+
+.style-card{
+    min-width: 350px;
+    max-width: 360px;
+    margin-right: 10px;
+}
+
+.ready-row{
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+input{
+    height: 50px;
+}
+@media only screen and (max-width: 600px){
+    .style-card{
+        min-width: 280px;
+        max-width: 300px;
+        margin-right: 10px;
+    }
+}
