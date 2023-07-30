@@ -225,11 +225,11 @@ input{
         top: -180px;
     }
     .designs-row .card{
-        margin-bottom: -128px !important;
+        margin-bottom: -50px !important;
     }
     .ready-products{
         position: relative;
-        top: -180px;
+        top: -160px;
         margin-bottom: 40px;
     }
     .style-card{
@@ -241,5 +241,29 @@ input{
     footer{
         position: relative;
         top: -180px;
+    }
+}
+
+@media only screen and (max-width: 389px){
+    .designs-row .card{
+        margin-bottom: -16vh !important;
+    }
+}
+
+@media only screen and (max-width: 397px) and (min-width: 390px){
+    .designs-row .card{
+        margin-bottom: -9.5vh !important;
+    }
+}
+
+@media only screen and (max-width: 365px){
+    .designs-row .card{
+        margin-bottom: -17vh !important;
+    }
+}
+
+@media only screen and (max-width: 365px){
+    .designs-row .card{
+        margin-bottom: -17vh !important;
     }
 }
