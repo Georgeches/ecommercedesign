@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
     font-family: 'Roboto', sans-serif;
@@ -25,14 +26,32 @@ body{
 }
 
 nav{
-    background-color: rgba(58, 58, 58, 0.29);
+    background-color: rgb(255, 255, 255);
     z-index: 2;
     top: 0px;
+    border-bottom: 1px solid black;
 }
 
-.nav-top, .navbar-collapse{
+.search-form form{
     display: flex;
-    justify-content: space-between;
+    align-items: end;
+    margin-right: 40px;
+}
+
+.search-form form input{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    color: black !important;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-btn{
+    border-bottom: 1px solid black;
+    border-left: 1px solid rgb(202, 202, 202);
+    border-radius: 0px;
+    padding-bottom: 10px;
 }
 
 .carousel{
@@ -41,7 +60,6 @@ nav{
 }
 
 .nav-link{
-    color: rgb(255, 255, 255) !important;
     margin-right: 60px;
     font-size: 17px;
 }
@@ -61,13 +79,19 @@ nav{
     color: goldenrod !important;
 }
 
+.carousel-item{
+    height: 110vh;
+}
+
 .carousel-item img{
-    filter: brightness(70%);
+    filter: brightness(90%);
+    width: 100%;
+    height: auto; 
 }
 
 .carousel-content{
     position: relative;
-    bottom: 60vh;
+    bottom: 80vh;
 }
 
 .carousel-content-second{
@@ -75,14 +99,49 @@ nav{
     bottom: 70vh;
 }
 
-.card-body{
+.designs{
+    position: relative;
+    top: -40px;
+}
+
+.designs-row .card-body{
     cursor: pointer;
-    height: 500px;
-    background-color: rgb(244, 244, 244) !important;
+    height: 600px;
+    overflow: hidden;
+    background-color: rgba(218, 218, 218, 0) !important;
+}
+
+.designs-row .card-body img{
+    width: 100%;
 }
 
 .ready-row .card-body{
-    height: 400px;
+    height: 450px;
+    text-align: center;
+}
+
+.ready-row .card-body img{
+    height: 70%;
+    margin-top: 20px;
+    mix-blend-mode:multiply;
+}
+
+.product-details{
+    width: 85%;
+}
+
+.product-details i{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-details i:hover{
+    background-color: rgb(238, 238, 238);
 }
 
 .style-card{
@@ -102,14 +161,60 @@ input{
     height: 50px;
 }
 
+.offcanvas{
+    width: 600px;
+}
+
+.order-quantity button{
+    font-size: 18px;
+    border: 1px solid rgb(152, 152, 152);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
+}
+
+.remove-btn{
+    font-size: 20px;
+    padding-right: 0px;
+    padding-top: 0px;
+}
+
+.cart-row{
+}
+
+.order-quantity input{
+    width: 100px;
+    text-align: center;
+    height: 40px;
+    padding: 0px;
+}
+
+@media only screen and (min-width: 600px){
+    .search-icon{
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 600px){
+
+    .navbar-brand{
+        margin-right: 40px;
+    }
+    .search-form{
+        display: none;
+    }
+    .search-icon{
+        display: block;
+    }
     .carousel{
         height: 100vh;
         overflow: hidden;
-        bottom: 0px;
+        top: 78px;
     }
     .carousel-item img{
-        height: 50vh;
+        width: auto;
+        height: 60vh;
+        filter: brightness(80%);
     }
     .carousel-content{
         position: relative;
@@ -117,19 +222,24 @@ input{
     }
     .designs{
         position: relative;
-        top: -300px;
+        top: -180px;
+    }
+    .designs-row .card{
+        margin-bottom: -128px !important;
+    }
+    .ready-products{
+        position: relative;
+        top: -180px;
+        margin-bottom: 40px;
     }
     .style-card{
         min-width: 280px;
         max-width: 300px;
         margin-right: 10px;
     }
-    .ready-products{
-        position: relative;
-        top: -300px;
-    }
+
     footer{
         position: relative;
-        top: -300px;
+        top: -180px;
     }
 }
