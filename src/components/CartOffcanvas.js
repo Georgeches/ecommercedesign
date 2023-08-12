@@ -84,7 +84,7 @@ export default function CartOffcanvas(){
                     </div>
                   </div>
 
-                  <button type="button" className="btn btn-dark btn-block btn-lg text-light">Proceed to Pay</button>
+                  <a role="button" href='/checkout' className="btn btn-dark btn-block btn-lg text-light">Proceed to Pay</a>
                   </div>
           
                 </div>

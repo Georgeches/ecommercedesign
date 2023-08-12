@@ -53,6 +53,22 @@ nav{
     padding-top: 0px;
 }
 
+.cart-icon{
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    bottom: 0px;
+    height: 40px;
+    width: 40px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.cart-icon i{
+    font-size: 25px;
+    color: black;
+}
+
 @media only screen and (min-width: 600px){
     .search-icon{
         display: none;

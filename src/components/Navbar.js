@@ -51,8 +51,8 @@ export default function Navbar(){
                 <a className="nav-link" href="#">Contact</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  <i className="bi bi-cart4"></i> Cart
+                <a className="cart-icon" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  <i className="bi bi-cart4"></i>
                 </a>
               </li>
             </ul>
@@ -60,11 +60,11 @@ export default function Navbar(){
 
           <div className="search-form" id="search-form">
             <form>
-              <input type="text" placeholder="Search" spellcheck="false" className="" />
+              <input type="text" placeholder="Search" spellCheck="false" className="" />
               <button className="btn btn-link search-btn text-dark"><i className="bi bi-search"></i></button>
             </form>
 
-            <button onClick={e=>hideSearch(e)} className="btn btn-link close-search text-dark fw-bold d-md-none" id="close-search">
+            <button onClick={e=>hideSearch(e)} className="btn btn-link close-search text-dark fw-bold d-lg-none" id="close-search">
               <i className="bi bi-x-lg"></i>
             </button>
           </div>

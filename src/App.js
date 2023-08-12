@@ -11,14 +11,18 @@ import ReadySection from './components/ReadySection';
 import Footer from './components/Footer';
 import ProductView from './components/ProductDetail';
 import Allproducts from './components/Allproducts';
+import ContactInfo from './components/ContactInfo';
+import ProgressIndicator from './components/ProgressIndicator';
+import PaymentForm from './components/PaymentForm';
 
 function App() {
+  console.log(JSON.parse(localStorage.getItem("user_details")))
   return (
     <BrowserRouter>
+      <Navbar/>
       <Routes>
           <Route path="/" element={
             <>
-            <Navbar/>
             <Carousel/>
             <ReadySection/>
             <Designs/>
@@ -30,7 +34,6 @@ function App() {
 
           <Route path="/viewproduct" element={
             <>
-            <Navbar/>
             <ProductView/>
             <CartOffcanvas/>
             </>
@@ -39,8 +42,23 @@ function App() {
 
           <Route path="/all" element={
             <>
-            <Navbar/>
             <Allproducts/>
+            </>
+          }>
+          </Route>
+
+          <Route path="/checkout" element={
+            <>
+            <ProgressIndicator/>
+            <ContactInfo/>
+            </>
+          }>
+          </Route>
+
+          <Route path="/payment" element={
+            <>
+            <ProgressIndicator/>
+            <PaymentForm/>
             </>
           }>
           </Route>
