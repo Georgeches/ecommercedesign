@@ -4,7 +4,7 @@ import './payment.css'
 
 export default function PaymentForm(){
 
-    let userDetails = JSON.parse(localStorage.getItem("user_details"))
+    let userDetails = JSON.parse(sessionStorage.getItem("user_details"))
     const [userMpesa, setMpesa] = useState(0)
     const [cardNumber, setCardNumber] = useState("")
     const [cardExpiration, setCardExpiration] = useState("")
@@ -55,7 +55,7 @@ export default function PaymentForm(){
                         </div>
                         <div className="card-body">
                             <p className=" mb-3" style={{textTransform: ""}}>{userDetails.email}</p>
-                            <p className="">+{userDetails.phone}</p>
+                            <p className="">{`${userDetails.phonePrefix}${userDetails.userPhone}`}</p>
                         </div>
                     </div>
                 </div>
@@ -73,6 +73,23 @@ export default function PaymentForm(){
                         <div className="card-body">
                             <p className=" mb-3" style={{textTransform: "capitalize"}}>{userDetails.addressOne}, {userDetails.addressTwo}, {userDetails.city}</p>
                             <h6 className="">{userDetails.country}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="row justify-content-center mt-5">
+                <div className="col-12 col-lg-6">
+                    <div className="card contacts">
+                        <div className="card-header pb-0 pt-2 d-flex justify-content-between align-items-center bg-white">
+                            <p className="lead fw-normal">
+                                Cost Summary
+                            </p>
+                        </div>
+                        <div className="card-body">
+                            <p className=" mb-3" style={{textTransform: ""}}>Subtotal cost: Ksh. 10000</p>
+                            <p className=" mb-3" style={{textTransform: ""}}>Shipping cost: Ksh. 500</p>
+                            <p className="fw-bold">TOTAL: Ksh. 10500</p>
                         </div>
                     </div>
                     <hr className="mt-5"/>
@@ -97,11 +114,9 @@ export default function PaymentForm(){
                         <div className="row">
                         <div className="col-3 col-lg-2 me-0">
                             <input
-                                type="number"
-                                maxLength="4"
-                                placeholder="+254"
+                                type="text"
                                 className="form-control"
-                                value={userDetails.phone.slice(0,3)}
+                                value={userDetails.phonePrefix}
                                 readOnly
                             />
                         </div>
@@ -117,7 +132,7 @@ export default function PaymentForm(){
                             />
                         </div>
                     </div>
-                    <button className="btn purchase">Continue to purchase</button>
+                    <button className="btn purchase mb-4">Continue to purchase</button>
                     </form>
                 </div>
             </div>
@@ -128,7 +143,7 @@ export default function PaymentForm(){
                         <label htmlFor="card-number" className="fw-bold form-label">
                                 Card number
                         </label>
-                        <input id='card-number' maxLength='19' value={cardNumber} onChange={handleCardNumberChange} type='text' placeholder='0000 0000 0000 0000' className='form-control mb-4'/>
+                        <input id='card-number' maxLength='19' value={cardNumber} onChange={handleCardNumberChange} type='text' placeholder='0000 0000 0000 0000' className='form-control mb-4' required/>
                         <div className="row mt-4">
                             <div className="col">
                                 <label htmlFor="expiration" className="fw-bold form-label">
@@ -142,6 +157,7 @@ export default function PaymentForm(){
                                     className="form-control"
                                     value={cardExpiration}
                                     onChange={handleExpirationChange}
+                                    required
                                 />
                             </div>
                             <div className="col">

@@ -21,13 +21,13 @@ export default function Footer(){
                     <h2 className="text-center text-dark">Any questions?</h2>
                     <p className="lead text-center text-dark">Fill the form to message us</p>
                     <form>
-                        <label for="name" className="form-label">Name</label>
+                        <label htmlFor="name" className="form-label">Name</label>
                         <input type="text" spellCheck="false" className="form-control mb-4 border-0 shadow-sm" placeholder="e.g Matia" id="name"/>
 
-                        <label for="email" className="form-label">Email</label>
+                        <label htmlFor="email" className="form-label">Email</label>
                         <input type="email" spellCheck="false" className="form-control border-0 shadow-sm" placeholder="e.g matia@example.com" id="email"/>
 
-                        <label for="message" className="form-label mt-4">Message</label>
+                        <label htmlFor="message" className="form-label mt-4">Message</label>
                         <textarea style={{height: "200px"}} spellCheck="false" className="form-control border-0 shadow-sm" placeholder="Your message or query" id="name"></textarea>
                         <button className='btn btn-warning mt-3 text-white send-btn'>Send</button>
                     </form>

@@ -2,7 +2,7 @@ import './CartOffCanvas.css'
 
 export default function CartOffcanvas(){
     return(
-        <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header">
           <h4 className="offcanvas-title" id="offcanvasExampleLabel">Shopping cart</h4>
           <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -27,16 +27,14 @@ export default function CartOffcanvas(){
                           <p><span className="text-muted">Size: </span>M</p>
                           <p><span className="text-muted">Color: </span>Dark Green</p>
                           <div className="d-flex order-quantity align-items-center">
-                            <button className=" d-flex align-items-center btn btn-link text-dark text-decoration-none"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <button className=" d-flex align-items-center btn btn-link text-dark text-decoration-none">
                               -
                             </button>
             
                             <input id="form1" min="0" name="quantity" value="1" type="number"
                               className="form-control" />
             
-                            <button className="d-flex align-items-center btn btn-linktext-dark text-decoration-none"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <button className="d-flex align-items-center btn btn-linktext-dark text-decoration-none">
                               +
                             </button>
                           </div>
@@ -62,16 +60,14 @@ export default function CartOffcanvas(){
                           <p><span className="text-muted">Size: </span>M</p>
                           <p><span className="text-muted">Color: </span>Green</p>
                           <div className="d-flex order-quantity align-items-center">
-                            <button className=" d-flex align-items-center btn btn-link text-dark text-decoration-none"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <button className=" d-flex align-items-center btn btn-link text-dark text-decoration-none">
                               -
                             </button>
             
                             <input id="form1" min="0" name="quantity" value="1" type="number"
                               className="form-control" />
             
-                            <button className="d-flex align-items-center btn btn-linktext-dark text-decoration-none"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <button className="d-flex align-items-center btn btn-linktext-dark text-decoration-none">
                               +
                             </button>
                           </div>

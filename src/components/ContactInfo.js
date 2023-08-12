@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './checkout.css';
 import { useNavigate } from 'react-router-dom';
+import countryOptions from './CountryOptions';
 
 export default function ContactInfo() {
     const nav = useNavigate();
@@ -8,7 +9,7 @@ export default function ContactInfo() {
     const [firstName, setFirstName] = useState('');
     const [secondName, setSecondName] = useState('');
     const [userEmail, setUserEmail] = useState('');
-    const [userPhoneOne, setUserPhoneOne] = useState('');
+    const [phonePrefix, setCountryPrefix] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [addressOne, setAddressOne] = useState('');
     const [addressTwo, setAddressTwo] = useState('');
@@ -16,6 +17,23 @@ export default function ContactInfo() {
     const [country, setCountry] = useState('');
     const [saveInfo, setSaveInfo] = useState(false);
     const [userDetails, setUserDetails] = useState({});
+    const [selectFocus, setFocus] = useState(false)
+    let savedDetails = JSON.parse(sessionStorage.getItem('user_details'))
+
+    useEffect(() => {
+        const savedUserDetails = JSON.parse(localStorage.getItem('user_details')) || JSON.parse(sessionStorage.getItem('user_details'));
+        if (savedUserDetails) {
+            setFirstName(savedUserDetails.firstName || '');
+            setSecondName(savedUserDetails.secondName || '');
+            setUserEmail(savedUserDetails.email || '');
+            setCountryPrefix(savedUserDetails.phonePrefix || '');
+            setUserPhone(savedUserDetails.userPhone || '');
+            setAddressOne(savedUserDetails.addressOne || '');
+            setAddressTwo(savedUserDetails.addressTwo || '');
+            setCity(savedUserDetails.city || '');
+            setCountry(savedUserDetails.country || '');
+        }
+    }, []);
 
     function saveUserDetails(e) {
         e.preventDefault();
@@ -24,7 +42,8 @@ export default function ContactInfo() {
             firstName: firstName,
             secondName: secondName,
             email: userEmail,
-            phone: `${userPhoneOne}${userPhone}`,
+            phonePrefix: phonePrefix,
+            userPhone: parseInt(userPhone),
             addressOne: addressOne,
             addressTwo: addressTwo,
             city: city,
@@ -41,14 +60,10 @@ export default function ContactInfo() {
         nav('/payment');
     }
 
-    const options = [
-        { value: 'kenya', label: '+254' },
-    ];
-
     return (
         <div className="container-fluid checkout-page">
             <div className="row contact-info">
-                <form onSubmit={e=>saveUserDetails(e)}>
+                <form onSubmit={e => saveUserDetails(e)}>
                     <div className="row">
                         <div className="col">
                             <label htmlFor="first-name" className="form-label">
@@ -61,7 +76,9 @@ export default function ContactInfo() {
                                 placeholder="First name"
                                 className="form-control"
                                 value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)} required
+                                onChange={(e) => setFirstName(e.target.value)}
+                                spellCheck="false"
+                                required
                             />
                         </div>
                         <div className="col">
@@ -75,7 +92,9 @@ export default function ContactInfo() {
                                 placeholder="Second name"
                                 className="form-control"
                                 value={secondName}
-                                onChange={(e) => setSecondName(e.target.value)} required
+                                onChange={(e) => setSecondName(e.target.value)}
+                                spellCheck="false"
+                                required
                             />
                         </div>
                     </div>
@@ -88,23 +107,29 @@ export default function ContactInfo() {
                         placeholder="example@gmail.com"
                         className="form-control"
                         value={userEmail}
-                        onChange={(e) => setUserEmail(e.target.value)} required
+                        onChange={(e) => setUserEmail(e.target.value)}
+                        spellCheck="false"
+                        required
                     />
                     <label htmlFor="phone" className="form-label">
                         Phone number
                     </label>
                     <div className="row">
-                        <div className="col-3 col-lg-2">
-                            <input
-                                type="number"
-                                maxLength="4"
-                                placeholder="+254"
-                                className="form-control"
-                                value={userPhoneOne}
-                                onChange={(e) => setUserPhoneOne(e.target.value)} required
-                            />
+                        <div className="col-4 col-lg-3">
+                            <select onChange={e=>setCountryPrefix(e.target.value)} onFocus={e=>setFocus(!selectFocus)} onBlur={e=>setFocus(!selectFocus)} style={{height: "50px"}} className='form-select'>
+                                {sessionStorage.getItem('user_details')?
+                                    <option value={savedDetails?.phonePrefix}>{savedDetails?.phonePrefix}</option>
+                                    :
+                                    <option value="">+254</option>
+                                }
+                                {countryOptions.map(option => (
+                                    <option key={`${option.value} ${option.label}`} value={option.value}>
+                                        {selectFocus? `${option.label}`: option.value}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
-                        <div className="col-9 col-lg-10">
+                        <div className="col-8 col-lg-9">
                             <input
                                 autoComplete="off"
                                 type="number"
@@ -112,7 +137,9 @@ export default function ContactInfo() {
                                 placeholder="712345678"
                                 className="form-control"
                                 value={userPhone}
-                                onChange={(e) => setUserPhone(e.target.value)} required
+                                onChange={(e) => setUserPhone(e.target.value)}
+                                spellCheck="false"
+                                required
                             />
                         </div>
                     </div>
@@ -125,7 +152,9 @@ export default function ContactInfo() {
                         placeholder="Address 1 e.g street"
                         className="form-control"
                         value={addressOne}
-                        onChange={(e) => setAddressOne(e.target.value)} required
+                        onChange={(e) => setAddressOne(e.target.value)}
+                        spellCheck="false"
+                        required
                     />
                     <label htmlFor="address-two" className="form-label">
                         Address Line 2
@@ -136,7 +165,9 @@ export default function ContactInfo() {
                         placeholder="Address 2 e.g Apartment"
                         className="form-control"
                         value={addressTwo}
-                        onChange={(e) => setAddressTwo(e.target.value)} required
+                        onChange={(e) => setAddressTwo(e.target.value)}
+                        spellCheck="false"
+                        required
                     />
                     <label htmlFor="city" className="form-label">
                         City
@@ -147,7 +178,9 @@ export default function ContactInfo() {
                         placeholder="Nairobi"
                         className="form-control"
                         value={city}
-                        onChange={(e) => setCity(e.target.value)} required
+                        onChange={(e) => setCity(e.target.value)}
+                        spellCheck="false"
+                        required
                     />
                     <label htmlFor="country" className="form-label">
                         Country
@@ -159,20 +192,10 @@ export default function ContactInfo() {
                         placeholder="Kenya"
                         className="form-control"
                         value={country}
-                        onChange={(e) => setCountry(e.target.value)} required
+                        onChange={(e) => setCountry(e.target.value)}
+                        spellCheck="false"
+                        required
                     />
-                    <div className="form-check mb-2">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                            onChange={(e) => setSaveInfo(e.target.checked)}
-                        />
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            Save information for next time
-                        </label>
-                    </div>
                     <div className="form-check">
                         <input
                             className="form-check-input"
@@ -183,11 +206,7 @@ export default function ContactInfo() {
                             Agree to receive messages to your email about exciting offers...
                         </label>
                     </div>
-                    <button
-                        className="btn btn-dark mt-4 next-btn"
-                    >
-                        Next
-                    </button>
+                    <button className="btn btn-dark mt-4 next-btn">Next</button>
                 </form>
             </div>
         </div>
